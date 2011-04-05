@@ -35,7 +35,7 @@ static struct mtd_partition netgear_ms2110_nand_parts[] = {
 	}, {
 		.name = "uImage",
 		.offset = MTDPART_OFS_NXTBLK,
-		.size = SZ_4M
+		.size = SZ_6M
 	}, {
 		.name = "root",
 		.offset = MTDPART_OFS_NXTBLK,
