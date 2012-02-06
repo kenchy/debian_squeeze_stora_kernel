@@ -153,7 +153,7 @@ static void netgear_ms2110_power_off(void)
 #define NETGEAR_MS2110_GPIO_RED1_LED     23
 #define NETGEAR_MS2110_GPIO_RED2_LED     22
 
-int gpio_blink_set(unsigned gpio, unsigned long *delay_on, unsigned long *delay_off) {
+static int netgear_ms2110_gpio_blink_set(unsigned gpio, int state, unsigned long *delay_on, unsigned long *delay_off) {
 	if (*delay_on == 0 && *delay_off == 1) { 
 		/* this special case turns on hardware blinking */
 		orion_gpio_set_blink(gpio,1);
@@ -200,7 +200,7 @@ static struct gpio_led netgear_ms2110_gpio_led_pins[] = {
 static struct gpio_led_platform_data netgear_ms2110_gpio_leds_data = {
         .num_leds       = ARRAY_SIZE(netgear_ms2110_gpio_led_pins),
         .leds           = netgear_ms2110_gpio_led_pins,
-	.gpio_blink_set = &gpio_blink_set,
+	.gpio_blink_set = netgear_ms2110_gpio_blink_set,
 };
 
 
